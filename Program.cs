@@ -460,14 +460,94 @@ using System.Threading.Tasks;
 //Console.WriteLine(Result);
 //Console.ReadLine();
 #endregion
+#region Делает максимальное число из цифр представленного числа
+//long n = 2017;
+//List<long> numbers = new();
+//string Temporary = Convert.ToString(n);
+
+//foreach (var temp in Temporary)
+//    if (temp != '0') numbers.Add(Convert.ToInt32(temp) - 48);
+//    else numbers.Add(0);
+
+//numbers.Sort();
+//numbers.Reverse();
+//long Result = 0;
+
+//foreach (var i in numbers)
+//    Result = (Result * 10) + i;
+//if (Result == n) Result = -1;
+
+//Console.WriteLine(Result);
+//Console.ReadLine();
+#endregion
+#region Задача с кубиками
+//int Check1 = 0; int Check2 = 0; int Check3 = 0; int Check4 = 0; int Check5 = 0; int Check6 = 0;
+//int Score = 0;
+//int[] dise = new int[] { 2, 3, 4, 6, 2 };
+//foreach (int temp in dise)
+//{
+//    if (temp == 1) { Check1++; continue; }
+//    if (temp == 2) { Check2++; continue; }
+//    if (temp == 3) { Check3++; continue; }
+//    if (temp == 4) { Check4++; continue; }
+//    if (temp == 5) { Check5++; continue; }
+//    if (temp == 6) { Check6++; continue; }
+//}
+//    if (Check1 >= 3) { Check1 -= 3; Score += 1000; }
+//    if (Check2 >= 3) { Check2 -= 3; Score += 200; }
+//    if (Check3 >= 3) { Check3 -= 3; Score += 300; }
+//    if (Check4 >= 3) { Check4 -= 3; Score += 400; }
+//    if (Check5 >= 3) { Check5 -= 3; Score += 500; }
+//    if (Check6 >= 3) { Check6 -= 3; Score += 600; }
+
+//if (Check1 >= 1) Score += Check1 * 100;
+//if (Check5 >= 1) Score += Check5 * 50;
+
+//Console.WriteLine(Score);
+//Console.ReadLine();
+#endregion
+#region Доделать https://www.codewars.com/kata/5324945e2ece5e1f32000370/train/csharp 
+string a = "999999999999";
+string b = "45609999999";
+string max = string.Empty;
+string min = string.Empty;
+
+if (a.Length > b.Length) { max = a; min = b; }
+else { max = b; min = a; }
+
+int CheckZero = max.Length - min.Length;
+
+List<int> maxlist = new List<int>(max.Length);
+List<int> minlist = new List<int>(max.Length);
+List<int> Result = new List<int>();
+
+foreach (int temp in max)
+    maxlist.Add(temp - 48);
+foreach (int temp in min)
+{
+    if (CheckZero != 0) while (CheckZero != 0) { minlist.Add(0); CheckZero--; }
+    minlist.Add(temp - 48);
+}
+
+for (int i = 0; i < maxlist.Count; i++)
+    Result.Add(maxlist[i] + minlist[i]);
+
+Result.Reverse();
+for (int i = 0; i < Result.Count - 1; i++)
+{
+    if (i != Result.Count - 1) while (Result[i] >= 10) { Result[i + 1] += 1; Result[i] -= 10; }
+    else if (Result[i] >= 10) { Result.Add(0); while (Result[i] >= 10) { Result[i + 1] += 1; Result[i] -= 10; } }
+}
+Result.Reverse();
 
 
+string Output = string.Empty;
+foreach (var temp in Result)
+Output += temp.ToString(); 
 
-
-
-
-
-
+Console.WriteLine(Output);
+Console.ReadLine();
+#endregion
 
 
 
