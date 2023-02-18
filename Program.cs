@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-#region костыльне часы
+#region костыльные часы
 //bool Check = false; // Проверка условия
 //bool Delta = false;
 //char? CheckChar = null; // 
