@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -506,48 +507,85 @@ using System.Threading.Tasks;
 //Console.WriteLine(Score);
 //Console.ReadLine();
 #endregion
-#region Доделать https://www.codewars.com/kata/5324945e2ece5e1f32000370/train/csharp 
-string a = "999999999999";
-string b = "45609999999";
-string max = string.Empty;
-string min = string.Empty;
+#region  https://www.codewars.com/kata/5324945e2ece5e1f32000370/train/csharp 
+string a = "9999999235235423423423562435325499999";
+string b = "23532523652354235235235235325235324";
+//string max = string.Empty;
+//string min = string.Empty;
 
-if (a.Length > b.Length) { max = a; min = b; }
-else { max = b; min = a; }
+//if (a.Length > b.Length) { max = a; min = b; }
+//else { max = b; min = a; }
 
-int CheckZero = max.Length - min.Length;
+//int CheckZero = max.Length - min.Length;
 
-List<int> maxlist = new List<int>(max.Length);
-List<int> minlist = new List<int>(max.Length);
-List<int> Result = new List<int>();
+//List<int> maxlist = new List<int>(max.Length);
+//List<int> minlist = new List<int>(max.Length);
+//List<int> Result = new List<int>();
 
-foreach (int temp in max)
-    maxlist.Add(temp - 48);
-foreach (int temp in min)
-{
-    if (CheckZero != 0) while (CheckZero != 0) { minlist.Add(0); CheckZero--; }
-    minlist.Add(temp - 48);
-}
+//foreach (int temp in max)
+//    maxlist.Add(temp - 48);
+//foreach (int temp in min)
+//{
+//    if (CheckZero != 0) while (CheckZero != 0) { minlist.Add(0); CheckZero--; }
+//    minlist.Add(temp - 48);
+//}
 
-for (int i = 0; i < maxlist.Count; i++)
-    Result.Add(maxlist[i] + minlist[i]);
+//for (int i = 0; i < maxlist.Count; i++)
+//    Result.Add(maxlist[i] + minlist[i]);
 
-Result.Reverse();
-for (int i = 0; i < Result.Count - 1; i++)
-{
-    if (i != Result.Count - 1) while (Result[i] >= 10) { Result[i + 1] += 1; Result[i] -= 10; }
-    else if (Result[i] >= 10) { Result.Add(0); while (Result[i] >= 10) { Result[i + 1] += 1; Result[i] -= 10; } }
-}
-Result.Reverse();
+//Result.Reverse();
+//for (int i = 0; i < Result.Count - 1; i++)
+//{
+//    if (i != Result.Count - 1) while (Result[i] >= 10) { Result[i + 1] += 1; Result[i] -= 10; }
+//    else if (Result[i] >= 10) { Result.Add(0); while (Result[i] >= 10) { Result[i + 1] += 1; Result[i] -= 10; } }
+//}
+//Result.Reverse();
 
+//string Output = string.Empty;
+//foreach (var temp in Result)
+//    Output += temp.ToString();
 
-string Output = string.Empty;
-foreach (var temp in Result)
-Output += temp.ToString(); 
+BigInteger aInt;
+BigInteger bInt;
+
+BigInteger.TryParse(a, out aInt);
+BigInteger.TryParse(b, out bInt);
+
+var Output = (aInt + bInt).ToString();
 
 Console.WriteLine(Output);
 Console.ReadLine();
 #endregion
+#region 
+//string s = "moonmen";
+//int first_non_repeating_letter(string Temporary)
+//{
+//    for (int i = 0; i < Temporary.Length; i++)
+//    {
+//        bool Check = false;
+//        if (Temporary[i] == '.') { continue; }
+//        for (int j = i; j < Temporary.Length; j++)
+//        {
+
+//            if (Temporary[j] == '.') { continue; } 
+//            if (i == j) continue;
+//            if (Temporary[i] == Temporary[j]) { Temporary = Temporary.Replace(Temporary[j], '.'); Check = true; break; }
+//        }
+//        if (Check == false) { return i; }
+//    }
+//    return -1;
+//}
+
+//string Result = string.Empty;
+////if (s.Length == 0) return string.Empty + s[0];
+//string Temp = s.ToLower();
+//int Check = first_non_repeating_letter(Temp);
+////if (Check == -1) return string.Empty;
+///*else*/ Result += s[Check];
+//// return Result;
+//Console.WriteLine(Result);
+//Console.ReadLine();
+#endregion 
 
 
 
