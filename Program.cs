@@ -5,6 +5,7 @@ using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 #region костыльные часы
@@ -508,8 +509,8 @@ using System.Threading.Tasks;
 //Console.ReadLine();
 #endregion
 #region  https://www.codewars.com/kata/5324945e2ece5e1f32000370/train/csharp 
-string a = "9999999235235423423423562435325499999";
-string b = "23532523652354235235235235325235324";
+//string a = "9999999235235423423423562435325499999";
+//string b = "23532523652354235235235235325235324";
 //string max = string.Empty;
 //string min = string.Empty;
 
@@ -545,16 +546,16 @@ string b = "23532523652354235235235235325235324";
 //foreach (var temp in Result)
 //    Output += temp.ToString();
 
-BigInteger aInt;
-BigInteger bInt;
+//BigInteger aInt;
+//BigInteger bInt;
 
-BigInteger.TryParse(a, out aInt);
-BigInteger.TryParse(b, out bInt);
+//BigInteger.TryParse(a, out aInt);
+//BigInteger.TryParse(b, out bInt);
 
-var Output = (aInt + bInt).ToString();
+//var Output = (aInt + bInt).ToString();
 
-Console.WriteLine(Output);
-Console.ReadLine();
+//Console.WriteLine(Output);
+//Console.ReadLine();
 #endregion
 #region 
 //string s = "moonmen";
@@ -586,20 +587,107 @@ Console.ReadLine();
 //Console.WriteLine(Result);
 //Console.ReadLine();
 #endregion 
+#region двоиные преобразование, не доделал
+//string Regex = "011 110";
+//string[] Temporary = Regex.Split(" ");
+//int[] Result = new int[Temporary.Length];
+//for (int i = 0; i < Temporary.Length; i++)
+//{
+//    int Check = 1;
+//    int Temp = 0;
+//    for (int j = Temporary[i].Length - 1; j > 0; j--)
+//    {
+//        if (j == Temporary[i].Length - 1 && Temporary[i][Temporary[i].Length - 1] == '1') { Temp += 1; Check++; continue; }
+//        if (Temporary[i][j] == '1') { Temp += 2 ^ Check; Check++; }
+//    }
+//    Result[i] = Temp;
+//}
+#endregion
+#region Лайки
+// string name = string.Empty;
+// string[] name = new string[] { "Peter" };
+// string[] name = new string[] { "Jacob", "Alex" };
+// string[] name = new string[] { "Max", "John", "Mark" };
+// string[] name = new string[] { "Alex", "Jacob", "Mark", "Max" };
+//string Result = string.Empty;
+//if (name == null || name.Length <= 0) { Result += "no one likes this"; }
+//if (name.Length == 1) { Result += name[0] + " likes this"; }
+//if (name.Length == 2) { Result += name[0] + " and " + name [1] + " like this"; }
+//if (name.Length == 3) { Result += name[0] + ", " + name[1] + " and " + name[2] + " like this"; }
+//if (name.Length >= 4) { Result += name[0] + ", " + name[1] + " and " + (name.Length - 2) + " others like this"; }
+//Console.WriteLine(Result);
+//Console.ReadLine();
+#endregion
+#region массивы
+//string Result = string.Empty;
+//string numbers = "8 3 -5 42 -1 0 0 -9 4 7 4 -4";
+//string[] Temporary = numbers.Split(" ");
+//List<int> array = new List<int>(Temporary.Length);
+//foreach (var i in Temporary) array.Add(Convert.ToInt32(i));
+//array.Sort();
+//foreach (var i in array) Console.WriteLine(i);
+//Result += array[array.Count - 1] + " " + array[0];
+//Console.WriteLine(Result);
+//Console.ReadLine();
+#endregion
+#region просто массив
+//long n = 35231;
+//string Temporary = n.ToString();
+//List<int> array = new List<int>();
+//foreach (char i in Temporary) array.Add(i);
+//array.Reverse();
+//long[] Result = new long [array.Count];
+//for (int i = 0; i < array.Count; i++)
+//Result[i] = (array[i] - 48);
+//foreach (int i in Result)
+//    Console.WriteLine(i);
+//Console.ReadLine();
+#endregion
+
+#region Пиздец ебанный с ПОЛНЫМИ квадратами https://www.codewars.com/kata/5a3af5b1ee1aaeabfe000084/train/csharp
+int n = 10240;
+int Result = 0;
+int temp;
+List <int> Temporary = new List <int>();
+//while (n != 0)
+//{
+//    if (Math.Pow(temp, 2) > n) { n -= Convert.ToInt32(Math.Pow(temp - 1, 2)); Result++; temp = 1; }
+//    else temp++;
+//}
+for (int i = 1; i < n; i++)
+{
+    temp = (int)Math.Pow(i, 2);
+    if (temp <= n) Temporary.Add(temp);
+    else break;
+}
+Temporary.Reverse();
+
+
+int j = 0;
+while (n != 0)
+{
+    temp = Temporary[j];
+    if (j == Temporary.Count - 1) break;
+    if (n / temp <= 10 && n % temp == 0) { n -= temp; Result += 1; }
+    else j++;
+}
+
+if (n != 0)
+for (int i = 1; i < Temporary.Count; i++)
+if (Temporary[i] * 2 <= n /* && Temporary[i] * 2 >= Temporary[i-1]*/) { Result += 2; n -= Temporary[i] * 2; }
+else if (Temporary[i] * 3 <= n /*&& Temporary[i] * 2 >= Temporary[i - 1]*/) { Result += 3; n -= Temporary[i] * 3; }
+else if (Temporary[i] * 4 <= n /*&& Temporary[i] * 2 >= Temporary[i - 1]*/) { Result += 4; n -= Temporary[i] * 4; }
 
 
 
+while (n != 0)
+{
+    foreach (int i in Temporary)
+    {
+        if (i <= n) { Result++; n -= i; break; }
+    } 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+Console.WriteLine(Result);
+Console.ReadLine();
+#endregion
