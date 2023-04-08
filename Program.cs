@@ -644,7 +644,7 @@ using System.Threading.Tasks;
 //Console.ReadLine();
 #endregion
 
-#region Пиздец ебанный с ПОЛНЫМИ квадратами https://www.codewars.com/kata/5a3af5b1ee1aaeabfe000084/train/csharp
+#region Полные квадраты https://www.codewars.com/kata/5a3af5b1ee1aaeabfe000084/train/csharp
 int n = 10240;
 int Result = 0;
 int temp;
